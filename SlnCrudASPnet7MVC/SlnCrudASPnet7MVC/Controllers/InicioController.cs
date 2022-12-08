@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SlnCrudASPnet7MVC.Datos;
 using SlnCrudASPnet7MVC.Models;
 using System.Diagnostics;
 
@@ -6,16 +8,18 @@ namespace SlnCrudASPnet7MVC.Controllers
 {
     public class InicioController : Controller
     {
-        private readonly ILogger<InicioController> _logger;
+        // private readonly ILogger<InicioController> _logger;
+        private readonly ApplicationDbContext _contexto; 
 
-        public InicioController(ILogger<InicioController> logger)
+        public InicioController(ApplicationDbContext contexto)
         {
-            _logger = logger;
+            _contexto = contexto;
+            //_logger = logger;
         }
-
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _contexto.Contacto.ToListAsync());
         }
 
         public IActionResult Privacy()

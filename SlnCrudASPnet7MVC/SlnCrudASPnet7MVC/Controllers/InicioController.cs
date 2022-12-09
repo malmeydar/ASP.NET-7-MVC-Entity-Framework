@@ -17,14 +17,15 @@ namespace SlnCrudASPnet7MVC.Controllers
             //_logger = logger;
         }
         [HttpGet]
+        public IActionResult Crear()
+        {
+            return View(); 
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             return View(await _contexto.Contacto.ToListAsync());
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

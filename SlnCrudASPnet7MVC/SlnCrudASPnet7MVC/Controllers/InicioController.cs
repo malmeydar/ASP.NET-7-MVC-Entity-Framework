@@ -23,6 +23,7 @@ namespace SlnCrudASPnet7MVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult>Crear(Contacto contacto)
         {
             if(ModelState.IsValid)
@@ -33,6 +34,20 @@ namespace SlnCrudASPnet7MVC.Controllers
             }
             return View();  
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult>Editar(Contacto contacto)
+        {
+            if (ModelState.IsValid)
+            {
+                _contexto.Contacto.Update(contacto);
+                await _contexto.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
+        }
+
+
         [HttpGet]
         public IActionResult Editar(int? Id)
         {

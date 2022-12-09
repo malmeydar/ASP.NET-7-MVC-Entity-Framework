@@ -33,6 +33,20 @@ namespace SlnCrudASPnet7MVC.Controllers
             }
             return View();  
         }
+        [HttpGet]
+        public IActionResult Editar(int? Id)
+        {
+            if(Id== null)
+            {
+                return NotFound();
+            }
+            var contacto = _contexto.Contacto.Find(Id);
+            if (contacto==null)
+            {
+                return NotFound();  
+            }
+            return View(contacto);
+        }
 
         [HttpGet]
         public async Task<IActionResult> Index()

@@ -36,7 +36,7 @@ namespace SlnCrudASPnet7MVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult>Editar(Contacto contacto)
+        public async Task<IActionResult>    Editar(Contacto contacto)
         {
             if (ModelState.IsValid)
             {
@@ -59,6 +59,21 @@ namespace SlnCrudASPnet7MVC.Controllers
             if (contacto==null)
             {
                 return NotFound();  
+            }
+            return View(contacto);
+        }
+
+        [HttpGet]
+        public IActionResult Detalle(int? Id)
+        {
+            if (Id == null)
+            {
+                return NotFound();
+            }
+            var contacto = _contexto.Contacto.Find(Id);
+            if (contacto == null)
+            {
+                return NotFound();
             }
             return View(contacto);
         }

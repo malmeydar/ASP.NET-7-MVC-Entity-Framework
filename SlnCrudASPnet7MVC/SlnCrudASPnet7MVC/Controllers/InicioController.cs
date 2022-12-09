@@ -22,6 +22,18 @@ namespace SlnCrudASPnet7MVC.Controllers
             return View(); 
         }
 
+        [HttpPost]
+        public async Task<IActionResult>Crear(Contacto contacto)
+        {
+            if(ModelState.IsValid)
+            {
+                _contexto.Contacto.Add(contacto);
+                await _contexto.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View();  
+        }
+
         [HttpGet]
         public async Task<IActionResult> Index()
         {

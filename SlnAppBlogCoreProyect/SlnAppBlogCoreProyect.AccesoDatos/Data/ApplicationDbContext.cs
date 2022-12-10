@@ -10,7 +10,7 @@ namespace SlnAppBlogCoreProyect.Data
             : base(options)
         {
         }
-        public DbSet<Categoria> Categoria { get; set; }
+        public DbSet<Categoria> Categoria { get; set;}
 
 
     }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SlnAppBlogCoreProyect.Models;
 
 namespace SlnAppBlogCoreProyect.Data
 {
@@ -9,5 +10,8 @@ namespace SlnAppBlogCoreProyect.Data
             : base(options)
         {
         }
+        public DbSet<Categoria> Categoria { get; set; }
+
+
     }
 }

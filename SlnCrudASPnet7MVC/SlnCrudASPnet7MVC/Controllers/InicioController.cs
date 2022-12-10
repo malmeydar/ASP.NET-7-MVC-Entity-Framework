@@ -47,6 +47,21 @@ namespace SlnCrudASPnet7MVC.Controllers
             return View();
         }
 
+        [HttpPost,ActionName("Borrar")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult>BorrarContacto(int? Id)
+        {
+            var contacto= await _contexto.Contacto.FindAsync(Id);
+            if (contacto==null)
+            {
+                return View();
+            }
+            //Iniciamos el borrado
+            _contexto.Contacto.Remove(contacto);
+            await _contexto.SaveChangesAsync();
+            return RedirectToAction(nameof(Index)); 
+        }
+
 
         [HttpGet]
         public IActionResult Editar(int? Id)
@@ -65,6 +80,20 @@ namespace SlnCrudASPnet7MVC.Controllers
 
         [HttpGet]
         public IActionResult Detalle(int? Id)
+        {
+            if (Id == null)
+            {
+                return NotFound();
+            }
+            var contacto = _contexto.Contacto.Find(Id);
+            if (contacto == null)
+            {
+                return NotFound();
+            }
+            return View(contacto);
+        }
+        [HttpGet]
+        public IActionResult Borrar(int? Id)
         {
             if (Id == null)
             {

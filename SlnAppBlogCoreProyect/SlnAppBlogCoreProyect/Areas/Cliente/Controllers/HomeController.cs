@@ -2,8 +2,9 @@
 using SlnAppBlogCoreProyect.Models;
 using System.Diagnostics;
 
-namespace SlnAppBlogCoreProyect.Controllers
+namespace SlnAppBlogCoreProyect.Areas.Cliente.Controllers
 {
+    [Area("Cliente")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

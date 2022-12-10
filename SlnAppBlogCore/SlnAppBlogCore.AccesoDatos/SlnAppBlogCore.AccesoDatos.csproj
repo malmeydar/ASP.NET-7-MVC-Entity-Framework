@@ -16,4 +16,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SlnAppBlogCore.Models\SlnAppBlogCore.Models.csproj" />
+    <ProjectReference Include="..\SlnAppBlogCore.Utilidades\SlnAppBlogCore.Utilidades.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,4 @@
-namespace SlnAppBlogCoreProyect.Models.ViewModels
+namespace SlnAppBlogCoreProyect.Models
 {
     public class ErrorViewModel
     {
